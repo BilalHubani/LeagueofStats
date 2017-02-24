@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 spinner.setVisibility(View.INVISIBLE);
                 summoner.setVisibility(View.INVISIBLE);
                 button.setVisibility(View.INVISIBLE);
-
+                downloadId = new DownloadId();
                 Wait(3000);
             }
         });
