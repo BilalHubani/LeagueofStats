@@ -16,7 +16,6 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textView"
         android:id="@+id/summoner"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -32,9 +31,11 @@
         android:id="@+id/searchButton" />
 
     <Spinner
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/summoner"
         android:layout_centerHorizontal="true"
-        android:id="@+id/spinner" />
+        android:id="@+id/spinner"
+        style="@android:style/Widget.Holo.Light.Spinner"
+        android:entries="@array/regions" />
 </RelativeLayout>
