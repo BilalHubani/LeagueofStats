@@ -38,4 +38,13 @@
         android:id="@+id/spinner"
         style="@android:style/Widget.Holo.Light.Spinner"
         android:entries="@array/regions" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.Material.Light.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" >
+    </ProgressBar>
 </RelativeLayout>
