@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinner;
     EditText summoner;
     Button button;
-    DownloadId downloadId;
+    DownloadId di;
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +32,13 @@ public class MainActivity extends AppCompatActivity {
                 summoner.setVisibility(View.INVISIBLE);
                 button.setVisibility(View.INVISIBLE);
                 Log.e("Entra en antes","yeah");
-                downloadId = new DownloadId();
-                Log.e("Entra en despues","yeah");
+                di = new DownloadId();
+                di.setOnInfoLoadedListener(new OnInfoLoadedListener() {
+                    @Override
+                    public void onInfoLoaded(boolean ok) {
+                        Log.e("","acaba");
+                    }
+                });
             }
         });
     }

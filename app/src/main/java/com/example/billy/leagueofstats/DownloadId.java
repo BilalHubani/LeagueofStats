@@ -38,15 +38,20 @@ public class DownloadId extends AsyncTask<Void, String, String> {
         int count;
         BufferedReader reader = null;
         try {
-            URL url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/bimu?api_key=RGAPI-3a39327e-3d10-42c6-87b6-eb4ef96168a3");
+           /* URL url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/bimu?api_key=RGAPI-3a39327e-3d10-42c6-87b6-eb4ef96168a3");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.connect();
             int lengthOfFile = connection.getContentLength();
             int responseCode = connection.getResponseCode();
-            String a = connection.getContent().toString();
+            String a = connection.getContent().toString();*/
+            String url = "https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/bimu?api_key=RGAPI-3a39327e-3d10-42c6-87b6-eb4ef96168a3";
+            HttpHandler sh = new HttpHandler();
 
-            Log.e("funciona", a);
-            if (responseCode == 200) {
+            // Making a request to url and getting response
+            String jsonStr = sh.makeServiceCall(url);
+
+            Log.e("", "Response from url: " + jsonStr);
+          //  if (responseCode == 200) {
                /* InputStream input = new BufferedInputStream(url.openStream(), 8192);
                 ByteArrayOutputStream output = new ByteArrayOutputStream();
                 byte data[] = new byte[1024];
@@ -59,7 +64,7 @@ public class DownloadId extends AsyncTask<Void, String, String> {
                 output.flush();
                 jsonObject = new JSONObject(output.toString());
                 Log.e("json: ", jsonObject.toString());*/
-            }
+           // }
            /* this.xml = new String(output.toByteArray());
             Log.e("xml: ", xml);
             reader = new BufferedReader(new StringReader(xml));*/

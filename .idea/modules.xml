@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LeagueofStats.iml" filepath="$PROJECT_DIR$/LeagueofStats.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Leagueofstats.iml" filepath="$PROJECT_DIR$/Leagueofstats.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
