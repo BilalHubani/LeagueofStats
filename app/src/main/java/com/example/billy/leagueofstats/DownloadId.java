@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -18,30 +20,34 @@ import java.net.URL;
 public class DownloadId extends AsyncTask<Void, String, String> {
     private Context context;
     private OnInfoLoadedListener listener = null;
-
+    private JSONObject jsonObject;
     public void setOnInfoLoadedListener(OnInfoLoadedListener listener) {
         this.listener = listener;
     }
 
+    public DownloadId() {
+    }
+
     @Override
     protected void onPreExecute() {
+        Log.e("Entra en pre","yeah");
     }
 
     @Override
     protected String doInBackground(Void... voids) {
         int count;
         BufferedReader reader = null;
-
         try {
-            //fasdf asdf sad
-            URL url = new URL("http://stucom.flx.cat/lego/get_set_parts.php?set=60115-1&key=62fb8715af2c04f5d9a3d69bdde21e65");
+            URL url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/bimu?api_key=RGAPI-3a39327e-3d10-42c6-87b6-eb4ef96168a3");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.connect();
             int lengthOfFile = connection.getContentLength();
             int responseCode = connection.getResponseCode();
-            Log.e("funciona", "hasta aqui");
+            String a = connection.getContent().toString();
+
+            Log.e("funciona", a);
             if (responseCode == 200) {
-                InputStream input = new BufferedInputStream(url.openStream(), 8192);
+               /* InputStream input = new BufferedInputStream(url.openStream(), 8192);
                 ByteArrayOutputStream output = new ByteArrayOutputStream();
                 byte data[] = new byte[1024];
                 long total = 0;
@@ -51,6 +57,8 @@ public class DownloadId extends AsyncTask<Void, String, String> {
                 }
                 input.close();
                 output.flush();
+                jsonObject = new JSONObject(output.toString());
+                Log.e("json: ", jsonObject.toString());*/
             }
            /* this.xml = new String(output.toByteArray());
             Log.e("xml: ", xml);

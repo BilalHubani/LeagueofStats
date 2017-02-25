@@ -3,6 +3,7 @@ package com.example.billy.leagueofstats;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
                 spinner.setVisibility(View.INVISIBLE);
                 summoner.setVisibility(View.INVISIBLE);
                 button.setVisibility(View.INVISIBLE);
+                Log.e("Entra en antes","yeah");
                 downloadId = new DownloadId();
-                Wait(3000);
+                Log.e("Entra en despues","yeah");
             }
         });
     }
