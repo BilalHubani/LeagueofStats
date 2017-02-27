@@ -20,7 +20,6 @@ import java.net.URL;
 public class DownloadId extends AsyncTask<Void, String, String> {
     private Context context;
     private OnInfoLoadedListener listener = null;
-    private JSONObject jsonObject;
     public void setOnInfoLoadedListener(OnInfoLoadedListener listener) {
         this.listener = listener;
     }
@@ -38,36 +37,24 @@ public class DownloadId extends AsyncTask<Void, String, String> {
         int count;
         BufferedReader reader = null;
         try {
-           /* URL url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/bimu?api_key=RGAPI-3a39327e-3d10-42c6-87b6-eb4ef96168a3");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.connect();
-            int lengthOfFile = connection.getContentLength();
-            int responseCode = connection.getResponseCode();
-            String a = connection.getContent().toString();*/
             String url = "https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/bimu?api_key=RGAPI-3a39327e-3d10-42c6-87b6-eb4ef96168a3";
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall(url);
-
-            Log.e("", "Response from url: " + jsonStr);
-          //  if (responseCode == 200) {
-               /* InputStream input = new BufferedInputStream(url.openStream(), 8192);
-                ByteArrayOutputStream output = new ByteArrayOutputStream();
-                byte data[] = new byte[1024];
-                long total = 0;
-                while ((count = input.read(data)) != -1) {
-                    total += count;
-                    output.write(data, 0, count);
-                }
-                input.close();
-                output.flush();
-                jsonObject = new JSONObject(output.toString());
-                Log.e("json: ", jsonObject.toString());*/
-           // }
-           /* this.xml = new String(output.toByteArray());
-            Log.e("xml: ", xml);
-            reader = new BufferedReader(new StringReader(xml));*/
+            if (jsonStr.equals("Not found") || jsonStr.equals("error")) {
+                // no funca
+            }else {
+                //si funca
+                JSONObject jsonObject = new JSONObject(jsonStr);
+                JSONObject s = jsonObject.getJSONObject("bimu");
+                Summoner summoner = new Summoner();
+                summoner.setId(s.getString("id"));
+                summoner.setName(s.getString("name"));
+                summoner.setIconId(s.getString("profileIconId"));
+                summoner.setLvl(s.getString("summonerLevel"));
+                System.out.println(summoner);
+            }
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());
         }

@@ -31,13 +31,11 @@ public class MainActivity extends AppCompatActivity {
                 spinner.setVisibility(View.INVISIBLE);
                 summoner.setVisibility(View.INVISIBLE);
                 button.setVisibility(View.INVISIBLE);
-                Log.e("Entra en antes","yeah");
                 di = new DownloadId();
                 di.execute();
                 di.setOnInfoLoadedListener(new OnInfoLoadedListener() {
                     @Override
                     public void onInfoLoaded(boolean ok) {
-                        Log.e("","acaba");
                     }
                 });
             }

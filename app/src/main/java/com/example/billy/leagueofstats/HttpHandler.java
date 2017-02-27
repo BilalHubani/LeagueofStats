@@ -36,6 +36,10 @@ public class HttpHandler {
                 response = convertStreamToString(in);
             } else if (conn.getResponseCode() == 404){
                 // usuario no encontrado
+                response = "Not found";
+            } else {
+                // error desconocido
+                response = "error";
             }
         } catch (MalformedURLException e) {
             Log.e(TAG, "MalformedURLException: " + e.getMessage());
