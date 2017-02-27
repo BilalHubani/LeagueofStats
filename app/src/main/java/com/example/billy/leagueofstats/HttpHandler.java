@@ -29,9 +29,14 @@ public class HttpHandler {
             URL url = new URL(reqUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
+
             // read the response
-            InputStream in = new BufferedInputStream(conn.getInputStream());
-            response = convertStreamToString(in);
+            if (conn.getResponseCode() == 200) {
+                InputStream in = new BufferedInputStream(conn.getInputStream());
+                response = convertStreamToString(in);
+            } else if (conn.getResponseCode() == 404){
+                // usuario no encontrado
+            }
         } catch (MalformedURLException e) {
             Log.e(TAG, "MalformedURLException: " + e.getMessage());
         } catch (ProtocolException e) {

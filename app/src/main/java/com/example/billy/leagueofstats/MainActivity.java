@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 button.setVisibility(View.INVISIBLE);
                 Log.e("Entra en antes","yeah");
                 di = new DownloadId();
+                di.execute();
                 di.setOnInfoLoadedListener(new OnInfoLoadedListener() {
                     @Override
                     public void onInfoLoaded(boolean ok) {
